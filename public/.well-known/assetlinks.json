@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "org.alicialonso.campus",
+            "sha256_cert_fingerprints": [
+                "E8:88:05:0D:66:6B:86:8B:9F:91:CF:EF:16:66:C6:58:33:7C:91:BD:48:1A:2A:1F:EC:DE:99:7A:F6:8B:C9:4F"
+            ]
+        }
+    }
+]
