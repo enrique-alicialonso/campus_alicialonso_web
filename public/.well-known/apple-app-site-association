@@ -5,7 +5,8 @@
             {
                 "appID": "2SKBCUTH6B.org.alicialonso.campus",
                 "paths": [
-                    "*"
+                    "*",
+                    "/"
                 ]
             }
         ]
