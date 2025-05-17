@@ -23,30 +23,30 @@ const links: NavItem[] = [
     icon: LayoutDashboard,
     variant: "default",
   },
-  {
-    title: "Users",
-    href: "/dashboard/users",
-    icon: UsersRound,
-    variant: "ghost",
-  },
+  // {
+  //   title: "Users",
+  //   href: "/dashboard/users",
+  //   icon: UsersRound,
+  //   variant: "ghost",
+  // },
   {
     title: "Cursos",
     href: "/dashboard/cursos",
     icon: BookA,
     variant: "ghost",
   },
-  {
-    title: "Orders",
-    href: "/dashboard/orders",
-    icon: ShoppingCart,
-    variant: "ghost",
-  },
-  {
-    title: "Settings",
-    href: "/dashboard/settings",
-    icon: Settings,
-    variant: "ghost",
-  },
+  // {
+  //   title: "Orders",
+  //   href: "/dashboard/orders",
+  //   icon: ShoppingCart,
+  //   variant: "ghost",
+  // },
+  // {
+  //   title: "Settings",
+  //   href: "/dashboard/settings",
+  //   icon: Settings,
+  //   variant: "ghost",
+  // },
 ];
 
 export default function Sidebar({}: SidebarProps) {
