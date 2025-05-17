@@ -7,6 +7,9 @@ import { redirect } from "next/navigation";
 import CursosContent from "./content";
 import CourseList from "@/components/CourseList";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function CursosPage() {
   const userEmail = await getUserEmail();
   if (!userEmail) redirect("/");

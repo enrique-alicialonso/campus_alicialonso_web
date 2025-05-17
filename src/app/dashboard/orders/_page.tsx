@@ -27,6 +27,8 @@ type Payment = {
   method: string;
 };
 
+export const dynamic = "force-dynamic";
+
 const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "order",

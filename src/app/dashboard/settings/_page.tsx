@@ -12,6 +12,7 @@
 
 /** @format */
 "use client";
+export const dynamic = "force-dynamic";
 
 import { DataTable } from "@/components/DataTable";
 import { ColumnDef } from "@tanstack/react-table";

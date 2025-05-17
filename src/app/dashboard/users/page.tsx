@@ -6,6 +6,8 @@ import { UserManagement } from "@/components/user-management/user-management";
 import { UserManagementToolbar } from "@/components/user-management/user-management-toolbar";
 
 type Props = {};
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default async function UsersPage({}: Props) {
   const userEmail = await getUserEmail();

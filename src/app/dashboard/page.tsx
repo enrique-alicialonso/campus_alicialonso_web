@@ -4,6 +4,8 @@ import Card, { CardContent, CardProps } from "@/components/card";
 import { Activity, CreditCard, DollarSign, Users } from "lucide-react";
 import SalesCard, { SalesProps } from "@/components/SalesCard";
 
+export const dynamic = "force-dynamic";
+
 const data = {
   cardData: [
     {
