@@ -3,6 +3,8 @@ import { google } from "googleapis";
 import { adminAuth } from "@/lib/firebase/config/firebase-admin";
 import { guserauth } from "@/lib/google/google_auth";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   const authorization = req.headers.get("authorization");
 
