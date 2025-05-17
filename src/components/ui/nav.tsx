@@ -5,26 +5,29 @@
 import Link from "next/link";
 import { LucideIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/utils";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
-  TooltipTrigger
+  TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { usePathname } from "next/navigation";
 
+export interface NavItem {
+  title: string;
+  label?: string;
+  icon: LucideIcon;
+  variant: "default" | "ghost";
+  href: string;
+}
+
 interface NavProps {
   isCollapsed: boolean;
-  links: {
-    title: string;
-    label?: string;
-    icon: LucideIcon;
-    variant: "default" | "ghost";
-    href: string;
-  }[];
+  links: NavItem[];
 }
+[];
 
 export function Nav({ links, isCollapsed }: NavProps) {
   const pathName = usePathname();
@@ -44,7 +47,7 @@ export function Nav({ links, isCollapsed }: NavProps) {
                     className={cn(
                       buttonVariants({
                         variant: link.href === pathName ? "default" : "ghost",
-                        size: "icon"
+                        size: "icon",
                       }),
                       "h-9 w-9",
                       link.variant === "default" &&
@@ -74,7 +77,7 @@ export function Nav({ links, isCollapsed }: NavProps) {
                 className={cn(
                   buttonVariants({
                     variant: link.href === pathName ? "default" : "ghost",
-                    size: "sm"
+                    size: "sm",
                   }),
                   link.variant === "default" &&
                     "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
