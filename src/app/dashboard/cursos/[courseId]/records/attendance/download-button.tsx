@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { ActivityRecordData, StudentAttendanceReport } from "@/lib/types";
 import { prepareAttendanceReportForExcel } from "@/lib/utils/course";
+import { Download } from "lucide-react";
 
 interface DownloadButtonProps {
   courseName: string;
@@ -56,6 +57,9 @@ export default function DownloadButton({
   };
 
   return (
-    <Button onClick={handleDownloadCSV}>Descargar Reporte de Asistencia</Button>
+    <Button onClick={handleDownloadCSV}>
+      <Download className="w-4 h-4 mr-2" />
+      Descargar Reporte de Asistencia
+    </Button>
   );
 }

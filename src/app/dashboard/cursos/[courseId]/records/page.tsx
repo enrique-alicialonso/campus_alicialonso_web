@@ -7,13 +7,19 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { fetchCourseById, fetchUserInfo } from "@/lib/google/googleapis";
+import {
+  fetchCourseById,
+  fetchCourseStudents,
+  fetchUserInfo,
+} from "@/lib/google/googleapis";
 import { ActivityRecord } from "@/lib/types/course";
 import Link from "next/link";
 import { useState, useMemo } from "react";
 import RecordsContent from "./content";
-import { mapActivityRecordToData } from "@/lib/utils";
+import { generateAttendanceReport, mapActivityRecordToData } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import DownloadButton from "./attendance/download-button";
+import { ArrowLeftToLine, FileCheck2 } from "lucide-react";
 
 const getRecords = async (courseId: string): Promise<ActivityRecord[]> => {
   const records: ActivityRecord[] = [];
@@ -68,13 +74,16 @@ export default async function RecordsPage({
   params: { courseId: string };
 }) {
   const courseId = params.courseId;
-  const [records, course] = await Promise.all([
+  const [records, course, students] = await Promise.all([
     getRecords(courseId),
     fetchCourseById(courseId),
+    fetchCourseStudents(courseId),
   ]);
   const userIds = getUserUIds(records);
   const userNames = await Promise.all(userIds.map(fetchUserNames));
   const plainRecords = records.map(mapActivityRecordToData);
+  const attendanceReport = generateAttendanceReport(students, plainRecords);
+
   return (
     <div className="flex flex-col gap-5 w-full">
       <h1 className="text-xl font-bold flex justify-between items-center">
@@ -84,11 +93,20 @@ export default async function RecordsPage({
       <div className="flex gap-4">
         <Button asChild>
           <Link href={`/dashboard/cursos/${courseId}/records/attendance`}>
+            <FileCheck2 className="w-4 h-4 mr-2" />
             Ver Reporte de Asistencia
           </Link>
         </Button>
-        <Button variant="secondary" asChild>
-          <Link href={`/dashboard/cursos/${courseId}`}>Volver al Curso</Link>
+        <DownloadButton
+          courseName={course.name ?? "Curso"}
+          attendanceReport={attendanceReport}
+          records={plainRecords}
+        />
+        <Button variant="outline" asChild>
+          <Link href={`/dashboard/cursos/${courseId}`}>
+            <ArrowLeftToLine className="w-4 h-4 mr-2" />
+            Volver al Curso
+          </Link>
         </Button>
       </div>
       <RecordsContent
